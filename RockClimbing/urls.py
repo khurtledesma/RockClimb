@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Home import views as HomeViews
 
 urlpatterns = [
     path('secretlink55555/', admin.site.urls),
+    path('', HomeViews.index)
 ]
