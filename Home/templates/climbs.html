@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Climbs</h1>
+<h1>My Climbs</h1>
 
-<h2>See your current climbs:</h2>
+You have {{count}} total climbs.
 
-You have {{count}} current climbs.
-
-<p>Here are your current climbs</p>
-<ul>
-    {% for climb in climbs %}
+<h2>You have completed {{completedClimbCount}} climbs.</h2>
+<p>
+    {% for climb in completedClimb %}
     <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
     {% endfor %}
-</ul>
+</p>
+
+<h2>Here are your unfinished climbs. </h2>
+<p> 
+
+    {% for climb in notCompletedClimb %}
+    <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
+    {% endfor %}
+</p>
+
+
 {% endblock %}
