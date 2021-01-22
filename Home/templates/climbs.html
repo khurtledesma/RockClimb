@@ -3,11 +3,11 @@
 {% block content %}
 <h1>My Climbs</h1>
 
-You have {{count}} total climbs.
+You have {{climbsData.count}} total climbs.
 
-<h2>You have completed {{completedClimbCount}} climbs.</h2>
+<h2>You have completed {{climbsData.completedClimbCount}} climbs.</h2>
 <p>
-    {% for climb in completedClimb %}
+    {% for climb in climbsData.completedClimb %}
     <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
     {% endfor %}
 </p>
@@ -15,7 +15,7 @@ You have {{count}} total climbs.
 <h2>Here are your unfinished climbs. </h2>
 <p> 
 
-    {% for climb in notCompletedClimb %}
+    {% for climb in climbsData.notCompletedClimb %}
     <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
     {% endfor %}
 </p>
