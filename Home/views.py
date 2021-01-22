@@ -1,6 +1,7 @@
 import requests
 from django.shortcuts import render
 from .models import Climbs
+from .forms import ClimbsForm
 
 # Create your views here.
 
@@ -47,4 +48,12 @@ def climbs(request):
     return render(request, 'climbs.html', context)
 
 def newClimb(request):
-    return render(request, 'newClimb.html')
+    form = ClimbsForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = ClimbsForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'newClimb.html', context)
