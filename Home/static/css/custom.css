@@ -1,0 +1,12 @@
+.carouselImg {
+    height:600px;
+    width:100%;
+}
+
+.carousel-inner > .carousel-item > img {
+    margin: 0 auto;
+  }
+
+  .center {
+      text-align: center;
+  }

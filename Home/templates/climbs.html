@@ -1,24 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>My Climbs</h1>
+<h1 class="center">My Climbs</h1>
+<hr>
+<div class="container">
+    <h2 class="center">You have {{climbsData.count}} total climbs this year. Keep it up!</h2>
 
-You have {{climbsData.count}} total climbs.
 
-<h2>You have completed {{climbsData.completedClimbCount}} climbs.</h2>
-<p>
-    {% for climb in climbsData.completedClimb %}
-    <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
-    {% endfor %}
-</p>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-6">
+            <h3><i>Click <a href=# id="completedH">here</a> to see your completed climbs.</i></h3>
+            <div id="completed" hidden>
+                {% for climb in climbsData.completedClimb %}
+                <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
+                {% endfor %}
+            </div>
+        </div>
 
-<h2>Here are your unfinished climbs. </h2>
-<p> 
+        <div class="col-md-6">
+            <h3><i>Click <a href=# id="uncompletedH">here</a> to see your unfinished climbs.</i></h3>
+            <div id="uncompleted" hidden>
+                {% for climb in climbsData.notCompletedClimb %}
+                <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 
-    {% for climb in climbsData.notCompletedClimb %}
-    <li>{{climb.name}} located in {{climb.city}}, {{climb.state}}</li>
-    {% endfor %}
-</p>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function () {
+            $("#completedH").click(function(){
+                $("#completed").removeAttr("hidden")
+            });
+            $("#uncompletedH").click(function(){
+                $("#uncompleted").removeAttr("hidden")
+            });
+        }
+        
+    );
+</script>
 
 
 {% endblock %}

@@ -6,20 +6,23 @@ from .forms import ClimbsForm
 # Create your views here.
 
 def index(request):
-    weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=319ce877549b8a92d0ca175e58407932'
     city = 'Austin'
+    mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCikhDfCw0_pf9qJHUW4GNwIi2x-Iau2P0&q={}'
+    weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=319ce877549b8a92d0ca175e58407932'
+    
 
-    r = requests.get(weatherUrl.format(city)).json()
+    wr = requests.get(weatherUrl.format(city)).json()
 
     weather = {
         'city': city,
-        'temp': r['main']['temp'],
-        'description': r['weather'][0]['description'],
-        'icon': r['weather'][0]['icon'], 
+        'temp': wr['main']['temp'],
+        'description': wr['weather'][0]['description'],
+        'icon': wr['weather'][0]['icon'], 
     }
     
     context = {
-        'weather': weather
+        'weather': weather,
+        'map': mapUrl,
         }
 
     return render(request, 'index.html', context)

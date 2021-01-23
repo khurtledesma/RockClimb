@@ -13,10 +13,12 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href ="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href ="{% static 'css/custom.css' %}" rel="stylesheet">
+        <script src="{% static 'jquery/jquery.min.js' %}" crossorigin="anonymous"></script>
 
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Welcome back, {{request.user}}!</a>
           
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -43,7 +45,7 @@
 
        {% block content %}
        {% endblock %}
-        <script src="" async defer></script>
-        <script src="{% static 'js/bootstrap.min.js' %} crossorigin="anonymous"></script>
+      <script src="{% static 'js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+       
     </body>
 </html>
