@@ -1,27 +1,49 @@
+{% load static %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
+    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link href ="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-        <nav>
-            <a href="{% url 'index' %}">Home</a> |
-            <a href="{% url 'climbs' %}">My Climbs</a> |
-            <a href="{% url 'new_climb' %}">Add a new Climb</a>
-        </nav>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">Navbar</a>
+          
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Home</a> 
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'climbs' %}">My Climbs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'new_climb' %}">Add a New Climb</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
     </head>
     <body>
 
        {% block content %}
        {% endblock %}
         <script src="" async defer></script>
+        <script src="{% static 'js/bootstrap.min.js' %} crossorigin="anonymous"></script>
     </body>
 </html>

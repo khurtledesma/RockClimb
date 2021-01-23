@@ -51,7 +51,7 @@ def newClimb(request):
     form = ClimbsForm(request.POST or None)
     if form.is_valid():
         form.save()
-        form = ClimbsForm()
+        form = ClimbsForm
 
     context = {
         'form': form
