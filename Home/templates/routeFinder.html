@@ -2,17 +2,20 @@
 {%load static%}
 
 {% block content %}
+
+
 <div class="container">
-    <h1>Ready to try something new? Let's find you a new route!</h1>
+    <h1 class="center">Route Finder</h1>
+    <h2 class="center">Let's find you a new route!</h2>
+    <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+          aria-describedby="search-addon" id="city"/>
+        <button class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search" id="citySubmit"></i>
+        </button>
+      </div>
 
-    <h2>Enter your city:</h2>
-    <form>
-        <input type="text" id="city">
-        <input type="submit" id="citySubmit">
-    </form>
-
-
-    <div class="row">
+    <div class="row margin-top20px">
 
         <div id="map" class="col-md-6">
         </div>
@@ -23,7 +26,6 @@
 
     </div>
 </div>
-
 <script>
 
     $(function () {
@@ -51,7 +53,7 @@
                         var Description = data.weather[0].Description
                         var Icon = data.weather[0].icon
                         $('#weather').html(
-                            '<h2> Showing results for:' + userInput + '</h2> <p> Temperature: ' + Temp + '<br> Humidity: ' + Humidity + ' <br> Description: ' + Description + '</p>' 
+                            '<div><h2> Showing Weather for: ' + userInput + '</h2> <p> Temperature: ' + Temp + '<br> Humidity: ' + Humidity + ' <br> Description: ' + Description + '</p></div>'
                         )
                     }
                 });

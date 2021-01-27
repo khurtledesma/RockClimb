@@ -2,6 +2,52 @@
 {%load static%}
 
 {% block content %}
-<img src="{%static 'img/Home1.jpg' %}" id="homeImage" alt="Rock climber">
+<div class="homeFirst">
+    <div class="bounce"></div>
+    <div class="homeFirstInner">
+        <h1 class="jumbotron-fluid">Welcome to Climb Tracker.</h1>
+        <br>
+        <br>
+        <h2>Keep track of your routes as well as discover new routes through others.</h2>
+    </div>
+</div>
+
+<div class="homeSecond">
+    <div class="container testimonials">
+        <h3 class="center">See What Our Users Are Climbing</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'img/user1.jpg' %}" alt="User 1"><br>
+                <caption>
+                    <p>User: Kayla33Reed</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at leo lacus. Mauris suscipit, justo in rhoncus tempus, eros tellus consectetur sem, eu pharetra ante mauris eu urna. Praesent egestas cursus vestibulum. Ut vel fermentum sapien, porttitor volutpat purus.</p>
+                </caption>
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'img/user2.jfif' %}" alt="User 2">
+                <p>User: SarahJohnson</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec turpis ut ante euismod auctor. Donec sit amet nisl gravida, finibus enim id, accumsan mi. Nunc eu pretium nisl. Pellentesque tincidunt, dolor in sollicitudin mattis, lorem ipsum dignissim nisi, non ultrices quam nisl a mi.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'img/user3.jpg' %}" alt="User 3">
+                <p>User: JakeMine</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget massa commodo dui sagittis porttitor. Phasellus imperdiet pellentesque nibh id viverra. Cras laoreet efficitur nulla eu elementum.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(window).scroll(function() {
+        if ($(this).scrollTop()>300)
+         {
+            $('.bounce').hide(1000);
+         }
+        else
+         {
+          $('.bounce').show(1000);
+         }
+     });
+</script>
 
 {% endblock %}

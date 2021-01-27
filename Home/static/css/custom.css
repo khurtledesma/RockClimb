@@ -13,9 +13,6 @@
 #weatherDisplay {
       border: 10px black solid;
   }
-#homeImage {
-    width: 100%;
-}
 
 .climbList {
     border: 2px solid black;
@@ -27,3 +24,94 @@
     margin-top: 20px;
 }
 
+.citySearch { 
+    margin-top: 50px;
+   
+}
+
+img .homeBanner{
+    height: 300px;
+}
+
+.homeFirst {
+    background-image: url("../img/Home3.jpg");
+    height: 1080px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.homeFirstInner {
+    color: white;
+    padding-top: 75px;
+    padding-left: 75px;
+    width: 40%;
+}
+.homeFirstInner h1{
+    font-weight: bold;
+    font-size: 72px;
+}
+
+.homeSecond {
+    background-color:black;
+    height: 500px;
+    color:white;
+}
+
+.testimonials h3{
+    font-size: 65px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.testimonials img {
+    height:150px;
+    width:150px;
+}
+
+.bounce {
+    position:fixed;
+    left:50%;
+    bottom:0;
+    margin-top:-25px;
+    margin-left:-25px;
+    height:50px;
+    width:50px;
+    background: url('https://static1.squarespace.com/static/5e78f290575a6321739eba41/t/5ec8625c6dad0e25fa5a8234/1590190684880/Arrow.png');
+    background-size: 100% auto;
+    -webkit-animation:bounce 1s infinite;
+    -moz-animation:bounce 1s infinite;
+    -o-animation:bounce 1s infinite;
+    animation:bounce 1s infinite;
+  
+  }
+  
+  @-webkit-keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:30;}
+  }
+  
+   @-moz-keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:30;}
+  }
+  
+   @-o-keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:30;}
+  }
+  
+   @keyframes bounce {
+    0%       { bottom:0px; }
+    50%      { bottom:15px; }
+    100%     {bottom:30;}
+  }
+
+  @media only screen and (max-width: 1023px) {
+    .bounce {
+      display: none;
+    }
+  }
