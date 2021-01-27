@@ -6,20 +6,32 @@
       text-align: center;
   }
 
-#completed, #uncompleted {
-      display: none;
-  }
-
 #weatherDisplay {
       border: 10px black solid;
   }
 
 .climbList {
-    border: 2px solid black;
     margin: 20px;
     padding: 15px;
+    font-size: 20px;
+    
 }
 
+.climbListTitle {
+    background-color: gray;
+    font-weight: bold;
+    padding-left: 15px;
+    border: 1px solid black;
+}
+
+.climbListTitle:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+.climbListInfo {
+    border: solid black 1px;
+    padding-left: 15px;
+}
 .margin-top20px{
     margin-top: 20px;
 }
@@ -35,7 +47,7 @@ img .homeBanner{
 
 .homeFirst {
     background-image: url("../img/Home3.jpg");
-    height: 1080px;
+    height: 900px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

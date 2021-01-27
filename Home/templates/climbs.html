@@ -6,52 +6,52 @@
 <div class="container">
     <h2 class="center">You have {{climbsData.count}} total climbs this year. Keep it up!</h2>
 
-    <div class="row margin-top20px" >
+    <div class="row margin-top20px">
         <div class="col-md-6">
-            <h3>Click <a href=# id="completedH">here</a> to see your completed climbs.</h3>
+            <h3 class="center">Completed Climbs ({{climbsData.completedClimbCount}})</h3>
             <div id="completed">
                 {% for climb in climbsData.completedClimb %}
                 <div class="climbList">
-                    {{climb.name}} located in {{climb.city}}, {{climb.state}}<br>
-                    Completed: {{climb.date}}<br>
-                    Type of Climb: {{climb.typeOfClimb}} <br>
-                    Rating: {{climb.rating}}
+                    <div class="climbListTitle">{{climb.name}} located in {{climb.city}}, {{climb.state}}.
+                    </div>
+                    <div class="climbListInfo">
+                        Completed: {{climb.date}}<br>
+                        Rating: {{climb.rating}}
+                    </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
-
-        <div class="col-md-6">
-            <h3>Click <a href=# id="uncompletedH">here</a> to see your unfinished climbs.</h3>
-            <div id="uncompleted">
-                {% for climb in climbsData.notCompletedClimb %}
-                <div class="climbList">
-                    {{climb.name}} located in {{climb.city}}, {{climb.state}}<br>
-                    First attempted on: {{climb.date}}<br>
-                    Type of Climb: {{climb.typeOfClimb}}<br>
-                    Rating: {{climb.rating}}
+            <div class="col-md-6">
+                <h3 class="center">Uncompleted Climbs ({{climbsData.notCompletedClimbCount}})</h3>
+                <div id="uncompleted">
+                    {% for climb in climbsData.notCompletedClimb %}
+                    <div class="climbList">
+                        <div class="climbListTitle">{{climb.name}} located in {{climb.city}}, {{climb.state}}.
+                        </div>
+                        <div class="climbListInfo">
+                            Completed: {{climb.date}}<br>
+                            Rating: {{climb.rating}}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
-    </div>
 </div>
 
 
+        <script type="text/javascript">
+            $(document).ready(
+                function () {
+                    $(".climbListInfo").hide();
+                    $(".climbListTitle").click(function () {
+                        $(this).next(".climbListInfo").toggle();
+                    });
+                }
 
-<script type="text/javascript">
-    $(document).ready(
-        function () {
-            $("#completedH").click(function(){
-                $("#completed").toggle();
-            });
-            $("#uncompletedH").click(function(){
-                $("#uncompleted").toggle();
-            });
-        }
-        
-    );
-</script>
+            );
+        </script>
 
 
-{% endblock %}
+        {% endblock %}
