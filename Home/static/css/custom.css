@@ -1,12 +1,29 @@
-.carouselImg {
-    height:600px;
-    width:100%;
-}
-
 .carousel-inner > .carousel-item > img {
     margin: 0 auto;
   }
 
-  .center {
+.center {
       text-align: center;
   }
+
+#completed, #uncompleted {
+      display: none;
+  }
+
+#weatherDisplay {
+      border: 10px black solid;
+  }
+#homeImage {
+    width: 100%;
+}
+
+.climbList {
+    border: 2px solid black;
+    margin: 20px;
+    padding: 15px;
+}
+
+.margin-top20px{
+    margin-top: 20px;
+}
+

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block content %}
+<div class="container">
+    <h1>Ready to try something new? Let's find you a new route!</h1>
+
+    <h2>Enter your city:</h2>
+    <form>
+        <input type="text" id="city">
+        <input type="submit" id="citySubmit">
+    </form>
+
+
+    <div class="row">
+
+        <div id="map" class="col-md-6">
+        </div>
+
+
+        <div class="col-md-6" id="weather">
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    $(function () {
+        $('#citySubmit').click(function (e) {
+            e.preventDefault() // stops the page from reloading 
+            $('#results').empty(); //empties page after submitting, allows you to search multiple times
+            var userInput = $('#city').val(); //gathers search input 
+            if (userInput === "") { //ensures fields are filled out
+                alert("Please fill out all of the fields.");
+            } else {
+                mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCikhDfCw0_pf9qJHUW4GNwIi2x-Iau2P0&q=' + userInput + '',
+                    $('#map').html(
+                        '<iframe width="500" height="500" frameborder="0" style="border:0" src="' + mapUrl + '" allowfullscreen> </iframe>'
+                    )
+
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + userInput + '&units=imperial&appid=319ce877549b8a92d0ca175e58407932',
+                    dataType: 'json', //dataType
+                    type: 'get', //getting JSON
+                    cache: false,
+                    success: function (data) {
+                        console.log(data)
+                        var Temp = data.main.temp
+                        var Humidity = data.main.humidity
+                        var Description = data.weather[0].Description
+                        var Icon = data.weather[0].icon
+                        $('#weather').html(
+                            '<h2> Showing results for:' + userInput + '</h2> <p> Temperature: ' + Temp + '<br> Humidity: ' + Humidity + ' <br> Description: ' + Description + '</p>' 
+                        )
+                    }
+                });
+            }
+        })
+    })
+</script>
+
+{% endblock %}

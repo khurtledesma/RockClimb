@@ -11,4 +11,5 @@ class ClimbsForm(forms.ModelForm):
             'typeOfClimb',
             'completed',
             'rating',
+            'date',
         ]
