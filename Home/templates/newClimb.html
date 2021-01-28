@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>New Climb</h1>
 
-<form method="POST">
-{% csrf_token %}
-   {{form.as_p}}
-   <input type="submit">
-</form>
-
+<div class="container">
+   <h1 class="center titles">Log a New Climb</h1>
+   <hr>
+   <div class="climbForm">
+      <div class="form-group">
+         <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-primary center">
+         </form>
+      </div>
+   </div>
+</div>
 {% endblock %}

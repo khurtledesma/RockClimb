@@ -5,7 +5,7 @@
 <div class="homeFirst">
     <div class="bounce"></div>
     <div class="homeFirstInner">
-        <h1 class="jumbotron-fluid">Welcome to Climb Tracker.</h1>
+        <h1 class="jumbotron-fluid">Welcome back {{request.user.first_name}}.</h1>
         <br>
         <br>
         <h2>Keep track of your routes as well as discover new routes through others.</h2>
@@ -14,7 +14,7 @@
 
 <div class="homeSecond">
     <div class="container testimonials">
-        <h3 class="center">See What Our Users Are Climbing</h3>
+        <h3 class="center">See What Others Are Climbing</h3>
         <div class="row">
             <div class="col-md-4">
                 <img src="{% static 'img/user1.jpg' %}" alt="User 1"><br>

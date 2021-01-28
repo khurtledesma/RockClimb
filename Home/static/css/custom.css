@@ -1,3 +1,30 @@
+@font-face {
+    font-family: 'Mukta';
+    src: url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    background-color: #8FC1E3;
+}
+
+.routes h2{
+    text-align: center; 
+}
+
+.titles {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.climbForm {    
+    border-radius: 25px;
+    border: 4px solid white;
+    background-color: white;
+    padding: 20px;
+    margin-top: 50px;
+}
+
 .carousel-inner > .carousel-item > img {
     margin: 0 auto;
   }
@@ -13,25 +40,42 @@
 .climbList {
     margin: 20px;
     padding: 15px;
-    font-size: 20px;
-    
+    font-size: 15px;
+    border-radius: 25px;
+    border: 1px black solid;
+    background-color: black;
+    color: white;
+}
+
+.routeFinderDiv{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.routeFinderResults{
+
+}
+
+iframe {
+    height: 400px;
+    width: 400px;
 }
 
 .climbListTitle {
-    background-color: gray;
     font-weight: bold;
     padding-left: 15px;
-    border: 1px solid black;
 }
 
-.climbListTitle:hover {
-    background-color: yellow;
+.climbList:hover {
+    background-color: white;
     cursor: pointer;
+    color: black;
 }
+
 .climbListInfo {
-    border: solid black 1px;
     padding-left: 15px;
 }
+
 .margin-top20px{
     margin-top: 20px;
 }
@@ -81,6 +125,36 @@ img .homeBanner{
     width:150px;
 }
 
+.card {
+    background-color: #ffffff;
+    border-radius: 50px;
+    color: #6f707d;
+    font-family: 'Marcellus', serif;
+    width: 100%;
+}
+
+.headingWeather {
+    font-size: 55px;
+    color: #2b304d
+}
+
+.temp {
+    place-items: center
+}
+
+.temp-details>p>span,
+.grey {
+    color: #a3acc1;
+    font-size: 12px
+}
+
+.fa {
+    color: #a5a5b1
+}
+
+*:focus {
+    outline: none
+}
 .bounce {
     position:fixed;
     left:50%;

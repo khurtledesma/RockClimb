@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="center">My Climbs</h1>
+<h1 class="center titles">My Climbs</h1>
 <hr>
 <div class="container">
-    <h2 class="center">You have {{climbsData.count}} total climbs this year. Keep it up!</h2>
+    <h2 class="center titles">You have {{climbsData.count}} total climbs this year. Keep it up!</h2>
 
     <div class="row margin-top20px">
         <div class="col-md-6">
             <h3 class="center">Completed Climbs ({{climbsData.completedClimbCount}})</h3>
+            <h6 class="center"><i>Click on each climb for more details.</i></h6>
             <div id="completed">
                 {% for climb in climbsData.completedClimb %}
                 <div class="climbList">
                     <div class="climbListTitle">{{climb.name}} located in {{climb.city}}, {{climb.state}}.
                     </div>
                     <div class="climbListInfo">
-                        Completed: {{climb.date}}<br>
-                        Rating: {{climb.rating}}
+                        <b>Completed:</b> {{climb.date}}<br>
+                        <b>Rating:</b> {{climb.rating}}<br>
+                        <b>Comments:</b> {{climb.comments}}
                     </div>
                 </div>
                 {% endfor %}
@@ -24,14 +26,16 @@
         </div>
             <div class="col-md-6">
                 <h3 class="center">Uncompleted Climbs ({{climbsData.notCompletedClimbCount}})</h3>
+                <h6 class="center"><i>Click on each climb for more details.</i></h6>
                 <div id="uncompleted">
                     {% for climb in climbsData.notCompletedClimb %}
                     <div class="climbList">
                         <div class="climbListTitle">{{climb.name}} located in {{climb.city}}, {{climb.state}}.
                         </div>
                         <div class="climbListInfo">
-                            Completed: {{climb.date}}<br>
-                            Rating: {{climb.rating}}
+                            <b>Last Attempted:</b> {{climb.date}}<br>
+                            <b>Rating:</b> {{climb.rating}}<br>
+                            <b>Comments:</b> {{climb.comments}}
                         </div>
                     </div>
                     {% endfor %}
@@ -45,8 +49,8 @@
             $(document).ready(
                 function () {
                     $(".climbListInfo").hide();
-                    $(".climbListTitle").click(function () {
-                        $(this).next(".climbListInfo").toggle();
+                    $(".climbList").click(function () {
+                        $(this).children(".climbListInfo").toggle();
                     });
                 }
 
