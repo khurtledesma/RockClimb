@@ -6,5 +6,6 @@ urlpatterns = [
     path('climbs/', views.climbs, name='climbs'),
     path('newClimb/', views.newClimb, name="new_climb"),
     path('routeFinder/', views.routeFinder, name="route_finder"),
+    path('thanks/', views.thanks, name="thanks"),
 
 ]            

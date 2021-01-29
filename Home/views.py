@@ -2,6 +2,7 @@ import requests
 from django.shortcuts import render
 from .models import Climbs
 from .forms import ClimbsForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -37,6 +38,7 @@ def newClimb(request):
     if form.is_valid():
         form.save()
         form = ClimbsForm
+        return HttpResponseRedirect('/thanks/')
 
     context = {
         'form': form
@@ -45,4 +47,7 @@ def newClimb(request):
     return render(request, 'newClimb.html', context)
 
 def routeFinder(request):
-    return render(request, 'routeFinder.html',)
+    return render(request, 'routeFinder.html')
+
+def thanks(request):
+    return render(request, 'thanks.html')

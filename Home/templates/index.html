@@ -5,10 +5,17 @@
 <div class="homeFirst">
     <div class="bounce"></div>
     <div class="homeFirstInner">
-        <h1 class="jumbotron-fluid">Welcome back {{request.user.first_name}}.</h1>
+        <h1 class="welcomeBack">Welcome back Khurt</h1>
         <br>
         <br>
-        <h2>Keep track of your routes as well as discover new routes through others.</h2>
+        <br>
+        
+        <ul class="homelist col-sm-12">
+            <h2>What would you like to do today?</h2>
+            <li class="homeListitem"> <a href="{% url 'route_finder' %}">Find A New Route</a></li>
+            <li class="homeListitem"> <a href="{% url 'climbs' %}">See My Climbs</a></li>
+            <li class="homeListitem"> <a href="{% url 'new_climb' %}">Add A Climb</a></li>
+        </ul>
     </div>
 </div>
 
@@ -16,22 +23,29 @@
     <div class="container testimonials">
         <h3 class="center">See What Others Are Climbing</h3>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
                 <img src="{% static 'img/user1.jpg' %}" alt="User 1"><br>
                 <caption>
                     <p>User: Kayla33Reed</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at leo lacus. Mauris suscipit, justo in rhoncus tempus, eros tellus consectetur sem, eu pharetra ante mauris eu urna. Praesent egestas cursus vestibulum. Ut vel fermentum sapien, porttitor volutpat purus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at leo lacus. Mauris
+                        suscipit, justo in rhoncus tempus, eros tellus consectetur sem, eu pharetra ante mauris eu urna.
+                        Praesent egestas cursus vestibulum. Ut vel fermentum sapien, porttitor volutpat purus.</p>
                 </caption>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
                 <img src="{% static 'img/user2.jfif' %}" alt="User 2">
                 <p>User: SarahJohnson</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec turpis ut ante euismod auctor. Donec sit amet nisl gravida, finibus enim id, accumsan mi. Nunc eu pretium nisl. Pellentesque tincidunt, dolor in sollicitudin mattis, lorem ipsum dignissim nisi, non ultrices quam nisl a mi.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec turpis ut ante euismod
+                    auctor. Donec sit amet nisl gravida, finibus enim id, accumsan mi. Nunc eu pretium nisl.
+                    Pellentesque tincidunt, dolor in sollicitudin mattis, lorem ipsum dignissim nisi, non ultrices quam
+                    nisl a mi.</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
                 <img src="{% static 'img/user3.jpg' %}" alt="User 3">
                 <p>User: JakeMine</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget massa commodo dui sagittis porttitor. Phasellus imperdiet pellentesque nibh id viverra. Cras laoreet efficitur nulla eu elementum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget massa commodo dui sagittis
+                    porttitor. Phasellus imperdiet pellentesque nibh id viverra. Cras laoreet efficitur nulla eu
+                    elementum.</p>
             </div>
         </div>
     </div>
@@ -39,16 +53,14 @@
 
 
 <script>
-    $(window).scroll(function() {
-        if ($(this).scrollTop()>300)
-         {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
             $('.bounce').hide(1000);
-         }
-        else
-         {
-          $('.bounce').show(1000);
-         }
-     });
+        }
+        else {
+            $('.bounce').show(1000);
+        }
+    });
 </script>
 
 {% endblock %}
