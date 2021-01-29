@@ -6,6 +6,7 @@
 body {
     font-family: 'Mukta', sans-serif;
     background-color: #8FC1E3;
+    color: #030005;
 }
 
 .routes h2{
@@ -33,18 +34,20 @@ body {
       text-align: center;
   }
 
-#weatherDisplay {
-      border: 10px black solid;
-  }
-
 .climbList {
     margin: 20px;
     padding: 15px;
     font-size: 15px;
     border-radius: 25px;
     border: 1px black solid;
-    background-color: black;
+    background-color: #102330;
     color: white;
+    transition: all .2s ease-in-out;
+}
+
+.climbList:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .routeFinderDiv{
@@ -53,7 +56,7 @@ body {
 }
 
 .routeFinderResults{
-
+    padding: 20px;
 }
 
 iframe {
@@ -66,11 +69,7 @@ iframe {
     padding-left: 15px;
 }
 
-.climbList:hover {
-    background-color: white;
-    cursor: pointer;
-    color: black;
-}
+
 
 .climbListInfo {
     padding-left: 15px;

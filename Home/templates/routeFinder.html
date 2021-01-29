@@ -5,11 +5,12 @@
 
 
 <div class="container">
+
     <h1 class="center titles">Route Finder</h1>
     <hr>
     <h2 class="center titles">Let's find you a new route!</h2>
     <div class="input-group rounded">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+        <input type="search" class="form-control rounded" placeholder="Enter a city here" aria-label="Search"
             aria-describedby="search-addon" id="city" />
         <button class="input-group-text border-0" id="search-addon">
             <i class="fas fa-search" id="citySubmit"></i>
@@ -20,118 +21,79 @@
         <div id="weather" class="col-md-6 routeFinderDiv">
             <div class="container-fluid">
                 <div class="justify-content-center">
-                        <div class="card p-4">
-                            <div class="d-flex">
-                                <h3 class="flex-grow-1" id="cityWeather"></h3>
-                                <h6 id="currentTime"></h6>
-                            </div>
-                            <div class="d-flex flex-column temp mt-5 mb-3">
-                                <h1 class="mb-0 font-weight-bold weatherHeading" id="cityTemperature"> Enter A City Above</h1> <span class="small grey" id="cityDescription"></span>
-                            </div>
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <p class="my-1"> <img src="{% static 'img/wind.png'%}" height="17px"> <span id="cityWind"></span> </p>
-                                    <p class="my-1"> <img src="{% static 'img/sunrise.png'%}" height="17px"> <span id="sunRise"> </span> </p>
-                                    <p class="my-1"> <img src="{% static 'img/sunset.png'%}" height="17px"> <span id="sunSet"> </span> </p>
-                                </div>
-                                <div id="weatherIcon"></div>
-                            </div>
+                    <div class="card p-4">
+                        <div class="d-flex">
+                            <h3 class="flex-grow-1" id="cityWeather"></h3>
+                            <h6 id="currentTime"></h6>
                         </div>
+                        <div class="d-flex flex-column temp mt-5 mb-3">
+                            <h1 class="mb-0 font-weight-bold weatherHeading" id="cityTemperature"> Enter A City Above
+                            </h1> <span class="small grey" id="cityDescription"></span>
+                        </div>
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="my-1"> <img src="{% static 'img/wind.png'%}" height="17px"> <span
+                                        id="cityWind"></span> </p>
+                                <p class="my-1"> <img src="{% static 'img/sunrise.png'%}" height="17px"> <span
+                                        id="sunRise"> </span> </p>
+                                <p class="my-1"> <img src="{% static 'img/sunset.png'%}" height="17px"> <span
+                                        id="sunSet"> </span> </p>
+                            </div>
+                            <div id="weatherIcon"></div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
 
         <div id="map" class="col-md-6 routeFinderDiv">
-            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCikhDfCw0_pf9qJHUW4GNwIi2x-Iau2P0&q=Austin" allowfullscreen> </iframe>
+            <iframe
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCikhDfCw0_pf9qJHUW4GNwIi2x-Iau2P0&q=Austin"
+                allowfullscreen> </iframe>
         </div>
     </div>
 
-    <div id="results" class="routeFinderResults routeFinderDiv" >
+    <div id="results" class="routeFinderResults routeFinderDiv" hidden>
+        <h2 class="center">Here are some popular climbs in <span id="cityClimbs"></span>.</h2>
+
+        <div class="climbList">
+            <div class="climbListTitle">Apple Jacks (boulder)
+            </div>
+            <div class="climbListInfo">
+                <b>Address:</b> 8118 Climbing Road <br>
+                <b>Rating: </b> v4 <br>
+                <b>Comments:</b> lorem Ipsum
+            </div>
+        </div>
+
+        <div class="climbList">
+            <div class="climbListTitle">Cinnamon toast crunch(sport climb)
+            </div>
+            <div class="climbListInfo">
+                <b>Address:</b> 123 West <br>
+                <b>Rating: </b> 5.13B <br>
+                <b>Comments:</b> lorem Ipsum
+            </div>
+        </div>
+
+        <div class="climbList">
+            <div class="climbListTitle">Lucky Charms (boulder) 
+            </div>
+            <div class="climbListInfo">
+                <b>Address:</b> 23281 Sundried <br>
+                <b>Rating: </b> v9 <br>
+                <b>Comments:</b> lorem Ipsum
+            </div>
+        </div>
 
     </div>
 
-
 </div>
 
+
+
 <script>
-
-    $(function () {
-        $('#citySubmit').click(function (e) {
-            e.preventDefault() // stops the page from reloading 
-            $('#results').empty(); //empties page after submitting, allows you to search multiple times
-            var userInput = $('#city').val(); //gathers search input 
-            if (userInput === "") { //ensures fields are filled out
-                alert("Please fill out all of the fields.");
-            } else {
-                mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCikhDfCw0_pf9qJHUW4GNwIi2x-Iau2P0&q=' + userInput + '',
-                    $('#map').html(
-                        '<iframe src="' + mapUrl + '" allowfullscreen> </iframe>'
-                    )
-
-                $.ajax({
-                    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + userInput + '&units=imperial&appid=319ce877549b8a92d0ca175e58407932',
-                    dataType: 'json', //dataType
-                    type: 'get', //getting JSON
-                    cache: false,
-                    success: function (data) {
-                        function timeConvert(x) {
-                            var date = new Date(x * 1000);
-                            var hours = date.getHours();
-                            var minutes = "0" + date.getMinutes();
-                            var seconds = "0" + date.getSeconds();
-                            var formatTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-                            return formatTime 
-                        }
-                    
-                        var timeNow = new Date();
-                        timeNowHours = timeNow.getHours();
-                        timeNowMinutes = timeNow.getMinutes();
-                        var TimeNowFormat = timeNowHours + ':' + timeNowMinutes
-                    
-                        var Temp = data.main.temp
-                        var Humidity = data.main.humidity
-                        var Description = data.weather[0].description
-                        var Wind = data.wind.speed
-                        var SunriseUnix = data.sys.sunrise
-                        var SunsetUnix = data.sys.sunset
-                        var Sunrise = timeConvert(SunriseUnix)
-                        var Sunset = timeConvert(SunsetUnix)
-                        var WeatherIcon = data.weather[0].icon
-                       
-                        $('#cityWeather').html(
-                            '<h3>' + userInput + '</h3>'
-                        )
-                        $('#cityTemperature').html(
-                            '<h1>' + Temp + ' ° F </h1>'
-                        )
-                        $('#cityDescription').html(
-                            Description
-                        )
-                        $('#cityWind').html(
-                           Wind + 'mph'
-                        )
-                        $('#sunRise').html(
-                            'Sunrise:' + Sunrise
-                        )
-                        $('#sunSet').html(
-                            'Sunset:' + Sunset
-                        )
-                        $('#results').html(
-                            '<h2 class="">Here are some popular climbs in ' + userInput + '.</h2> <ul> <li>Windows Edge: 3813 Dragon Road</li> <li> Tetris Edge: 57112 Elegant St </li> <li> Guitar Circle: 3451 Axle St. </li> </ul>'
-                        )
-                        $('#weatherIcon').html(
-                            '<img src="http://openweathermap.org/img/wn/' + WeatherIcon + '.png "width="100px" height="100px" alt="Weather icon"> '
-                        )
-                        $('#currentTime').html(
-                            TimeNowFormat
-                        )
-
-                    }
-                });
-            }s
-        })
-    })
 </script>
 
 {% endblock %}
