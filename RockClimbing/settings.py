@@ -26,7 +26,9 @@ SECRET_KEY = '6n@hr-ttxf01(qx%@o7@u0k$l+$g5a7fb=-^#9-bp)_vskb*#b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'khurtledesma.pythonanywhere.com',
+]
 
 
 # Application definition
